@@ -52,7 +52,60 @@ class LinkedList {
     return val;
   }
 
-  //   at() {}
+  at(index) {
+    let counter = 0;
+
+    if (index < 0 || index >= this.size) return null;
+
+    let temp = new Node(null);
+    temp = this.ref;
+
+    while (counter < index) {
+      temp = temp.next;
+      counter += 1;
+    }
+    return temp.value;
+  }
+
+  contains(value) {
+    let temp = new Node(null);
+    temp = this.ref;
+
+    while (temp != null) {
+      if (temp.value == value) return true;
+      temp = temp.next;
+    }
+
+    return false;
+  }
+
+  find(value) {
+    let index = 0;
+    if (this.size === 0) return null;
+    let temp = new Node(null);
+    temp = this.ref;
+
+    while (temp != null) {
+      if (temp.value == value) return index;
+      index++;
+      temp = temp.next;
+    }
+
+    return null;
+  }
+
+  toString() {
+    let string = "";
+    let temp = new Node(null);
+    temp = this.ref;
+
+    while (temp != null) {
+      string += temp.value + " -> ";
+      temp = temp.next;
+    }
+    string += "null";
+    return string;
+  }
 }
 
 class Node {
@@ -68,10 +121,18 @@ list.append(1);
 list.append(2);
 list.append(4);
 list.append(5);
-// list.prepend(8);
-// list.prepend(10);
+list.prepend(8);
+list.prepend(10);
 
 console.log(list.pop());
 console.log(list.pop());
 
 console.log(list.ref);
+
+console.log(list.at(2)); // 4
+
+console.log(list.contains(12)); // true
+
+console.log(list.find(2));
+
+console.log(list.toString());
