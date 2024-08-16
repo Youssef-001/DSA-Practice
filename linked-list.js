@@ -136,3 +136,5 @@ console.log(list.contains(12)); // true
 console.log(list.find(2));
 
 console.log(list.toString());
+
+// export { LinkedList, Node };
